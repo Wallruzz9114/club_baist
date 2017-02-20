@@ -1,24 +1,6 @@
-# README
+# Ruby on Rails Project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## "Club BAIST"
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This is a simple golf reservation system using
+[*Ruby on Rails*](http://rubyonrails.org/).
