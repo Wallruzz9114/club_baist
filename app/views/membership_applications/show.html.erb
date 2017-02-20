@@ -1,0 +1,62 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @membership_application.address %>
+</p>
+
+<p>
+  <strong>Postal code:</strong>
+  <%= @membership_application.postal_code %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @membership_application.phone %>
+</p>
+
+<p>
+  <strong>Occupation:</strong>
+  <%= @membership_application.occupation %>
+</p>
+
+<p>
+  <strong>Company name:</strong>
+  <%= @membership_application.company_name %>
+</p>
+
+<p>
+  <strong>Company adress:</strong>
+  <%= @membership_application.company_address %>
+</p>
+
+<p>
+  <strong>Company postal code:</strong>
+  <%= @membership_application.company_postal_code %>
+</p>
+
+<p>
+  <strong>Company phone:</strong>
+  <%= @membership_application.company_phone %>
+</p>
+
+<p>
+  <strong>Membership Type:</strong>
+  <%= @membership_application.membership %>
+</p>
+
+<p>
+  <strong>Sponsor #1:</strong>
+  <%= @membership_application.first_sponsor_name %>
+</p>
+
+<p>
+  <strong>Sponsor #2:</strong>
+  <%= @membership_application.second_sponsor_name %>
+</p>
+
+<% if current_user.admin == true %>
+  <%= link_to 'Edit', edit_membership_application_path(@membership_application) %> |
+  <%= link_to 'Back', membership_applications_path %>
+<% end %>
+

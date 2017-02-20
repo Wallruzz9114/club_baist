@@ -1,0 +1,61 @@
+<%= form_for(@membership_application) do |f| %>
+  <% if @membership_application.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@membership_application.errors.count, "error") %> prohibited this membership_application from being saved:</h2>
+
+      <ul>
+      <% @membership_application.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :address %><br>
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :postal_code %><br>
+    <%= f.text_field :postal_code %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br>
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :occupation %><br>
+    <%= f.text_field :occupation %>
+  </div>
+  <div class="field">
+    <%= f.label :company_name %><br>
+    <%= f.text_field :company_name %>
+  </div>
+  <div class="field">
+    <%= f.label :company_address %><br>
+    <%= f.text_field :company_address %>
+  </div>
+  <div class="field">
+    <%= f.label :company_postal_code %><br>
+    <%= f.text_field :company_postal_code %>
+  </div>
+  <div class="field">
+    <%= f.label :company_phone %><br>
+    <%= f.text_field :company_phone %>
+  </div>
+   <div class="field">
+     <%= f.label :membership %><br>
+     <%= f.select :membership, [["Gold", "Gold"], ["Silver", "Silver"], ["Bronze", "Bronze"], ["Copper", "Copper"]] %>
+  </div>
+  <div class="field">
+    <%= f.label :first_sponsor_name %><br>
+    <%= f.collection_select(:first_sponsor_name, User.where(shareholder: true), :full_name, :full_name) %>
+  </div>
+  <div class="field">
+    <%= f.label :second_sponsor_name %><br>
+    <%= f.collection_select(:second_sponsor_name, User.where(shareholder: true), :full_name, :full_name) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

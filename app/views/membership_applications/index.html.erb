@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Membership Applications</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Applicant</th>
+      <th>Membership</th>
+      <th>Sponsor 1</th>
+      <th>Sponsor 2</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @membership_applications.each do |membership_application| %>
+      <tr>
+        <td><%= membership_application.user.full_name %></td>
+        <td><%= membership_application.membership %><std>
+        <td><%= membership_application.first_sponsor_name %></td>
+        <td><%= membership_application.second_sponsor_name %></td>
+        <td><%= link_to 'Show', membership_application %></td>
+        <td><%= link_to 'Edit', edit_membership_application_path(membership_application) %></td>
+        <td><%= link_to 'Destroy', membership_application, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<% if current_user.nil? %>
+  <%= link_to 'New Membership application', new_membership_application_path %>
+<% end %>
