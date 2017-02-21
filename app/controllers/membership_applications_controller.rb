@@ -15,11 +15,7 @@ class MembershipApplicationsController < ApplicationController
 
   # GET /membership_applications/new
   def new
-    if current_user.guest == true
-      @membership_application = MembershipApplication.new
-    else
-      redirect_to new_user_session_path
-    end
+    @membership_application = MembershipApplication.new
   end
 
   # GET /membership_applications/1/edit
