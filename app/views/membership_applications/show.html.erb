@@ -69,8 +69,10 @@
 </p>
 
 <% if current_user.admin == true %>
-  <%= link_to 'Edit', edit_membership_application_path(@membership_application) %> |
-  <%= link_to 'Back', membership_applications_path %>
+  <div>
+  <%= link_to 'Edit', edit_membership_application_path(@membership_application), class: 'btn btn-sm btn-warning' %> |
+  <%= link_to 'Back', membership_applications_path, class: 'btn btn-sm btn-default' %>
+  </div>
 <% end %>
 
 <style type="text/css" media="screen">

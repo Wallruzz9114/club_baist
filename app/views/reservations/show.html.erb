@@ -1,0 +1,33 @@
+<p>
+  <strong>Reservee:</strong>
+  <%= @reservation.user.full_name %>
+</p>
+
+<p>
+  <strong>First guest name:</strong>
+  <%= @reservation.first_guest_name %>
+</p>
+
+<p>
+  <strong>Second guest name:</strong>
+  <%= @reservation.second_guest_name %>
+</p>
+
+<p>
+  <strong>Third guest name:</strong>
+  <%= @reservation.third_guest_name %>
+</p>
+
+<p>
+  <strong>Carts:</strong>
+  <%= @reservation.carts %>
+</p>
+
+<p>
+  <strong>Date and Time:</strong>
+  <%= @reservation.date_and_time.strftime("%b %d, %Y at %I:%M %p") %>
+</p>
+<div>
+  <%= link_to 'Edit', edit_reservation_path(@reservation), class: 'btn btn-sm btn-warning' %> |
+  <%= link_to 'Back', reservations_path, class: 'btn btn-sm btn-default' %>
+</div>

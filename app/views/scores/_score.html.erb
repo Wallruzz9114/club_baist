@@ -1,0 +1,4 @@
+<div>
+  Total Score: <%= score.total %> / Course Par: <%= score.course_rating %> / Handicap: <%= score.handicap %>
+  <%= link_to "Delete", reservation_score_path(score.reservation, score), method: :delete, class: 'btn btn-sm btn-danger' %></br >
+</div>

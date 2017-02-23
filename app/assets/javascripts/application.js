@@ -16,7 +16,8 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap.min
-//= require bootstrap-datepicker
+//= require bootstrap-datetimepicker
+//= require moment-with-locales.min
 //= require jquery.min
 //= require material-kit
 //= require material.min

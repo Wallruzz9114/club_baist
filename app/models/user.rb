@@ -6,4 +6,7 @@ class User < ApplicationRecord
   has_one :membership_application, :dependent => :destroy
 
   validates :full_name, presence: true
+  has_one :membership_application, :dependent => :destroy
+  has_many :reservations
+  has_many :scores
 end

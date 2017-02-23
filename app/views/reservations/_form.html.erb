@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-sm-8 col-md-6 col-md-offset-3">
+    <div>
+
+      <%= bootstrap_form_for(reservation) do |f| %>
+        <% if reservation.errors.any? %>
+          <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            The form contains <%= pluralize(reservation.errors.count, "error") %>.
+
+            <ul>
+              <% reservation.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <%= f.text_field :first_guest_name, autofocus: true, hide_label: true, placeholder: "First Guest", class: 'form-control' %>
+        <%= f.text_field :second_guest_name, hide_label: true, placeholder: "Second Guest", class: 'form-control' %>
+        <%= f.text_field :third_guest_name, hide_label: true, placeholder: "Third Guest", class: 'form-control' %>
+        <%= f.number_field :carts, hide_label: true, placeholder: "Number of Carts", class: 'form-control' %>
+        <%= f.datetime_field :date_and_time, start_year: Time.current.year, end_year: Time.current.year + 10, class: 'form-control' %>
+
+        <%= f.submit "Submit", class: 'btn btn-lg btn-block btn-info' %>
+      <% end %>
+    </div>
+  </div>
+</div>

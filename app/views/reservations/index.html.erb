@@ -1,0 +1,61 @@
+<br />
+
+<h2 class="text-center">Your Reservations</h2>
+<% if current_user.member == true %>
+  <%= link_to 'New Reservation', new_reservation_path, class: 'btn btn-sm btn-default pull-right' %>
+<% end %>
+
+<br /> <br /> <br />
+
+<div class="row">
+  <% counter = 1 %>
+  <% @reservations.each do |reservation| %>
+    <div class="col-sm-6">
+      <div class="panel panel-success">
+        <div class="panel-body">
+          <h3 class="text-center">Reservation #<%= counter %></h3>
+          <div class="text-center">
+            <%= reservation.date_and_time.strftime("%b %d, %Y at %I:%M %p") %>
+            <%= link_to 'Show', reservation, class: 'btn btn-sm btn-info' %> | <%= link_to 'Edit', edit_reservation_path(reservation), class: 'btn btn-sm btn-warning' %>
+          </div>
+          <% if reservation.score != nil %>
+
+          <div class="text-center">
+            <%= render reservation.score %>
+          </div>
+          <% else %>
+            <div class="col-sm-8 col-md-9 col-md-offset-2">
+              Add Score
+            <%= bootstrap_form_for([reservation, reservation.build_score]) do |f| %>
+              <% if session[:errors] %>
+                <div class="alert alert-danger">
+                  <button type="button" class="close" data-dismiss="alert">×</button>
+                  Ooops! Please correct the following:
+                  <ul>
+                    <% session[:errors].each do |msg| %>
+                      <li class="error"><%= msg %></li>
+                    <% end %>
+                  </ul>
+                </div>
+                <% session[:errors] = nil %>
+              <% end %>
+              <div class="row">
+                <div class="col-sm-4">
+                  <%= f.number_field :total, class: 'form-control' %>
+                </div>
+                <div class="col-sm-4">
+                  <%= f.number_field :course_rating, class: 'form-control' %>
+                </div>
+                <div class="col-sm-4">
+                  <%= submit_tag "Add", class: 'btn btn-sm btn-block btn-primary' %>
+                </div>
+              <div>
+              <% end %>
+              </div>
+          <% end %>
+          <% counter += 1 %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

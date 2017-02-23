@@ -4,13 +4,13 @@
       <%= bootstrap_form_for(@membership_application) do |f| %>
         <% if @membership_application.errors.any? %>
           <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert">×</button>
             The form contains <%= pluralize(@membership_application.errors.count, "error") %>.
             <ul>
               <% @membership_application.errors.full_messages.each do |msg| %>
                 <li><%= msg %></li>
               <% end %>
             </ul>
-
           </div>
         <% end %>
 

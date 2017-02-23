@@ -15,6 +15,7 @@
  *= require rails_bootstrap_forms
  *= require toastr
  *= require bootstrap.min
+ *= require bootstrap-material-datetimepicker
  *= require demo
  *= require material-kit
  */

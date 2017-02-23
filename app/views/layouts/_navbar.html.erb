@@ -9,7 +9,7 @@
         <% if current_user.guest == true %>
           <%= link_to "Club BAIST", root_path, class: "navbar-brand" %>
         <% elsif current_user.member == true %>
-          <%= link_to "Club BAIST", root_path, class: "navbar-brand" %>
+          <%= link_to "Club BAIST", reservations_path, class: "navbar-brand" %>
         <% elsif current_user.admin == true %>
           <%= link_to "Club BAIST", root_path, class: "navbar-brand" %>
         <% else %>
@@ -29,7 +29,6 @@
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           <li><%= link_to "Hey, " + current_user.full_name, "#" %></li>
-          <li><%= link_to "Edit profile", edit_user_registration_path %><li>
           <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
         <% else %>
           <li><%= link_to "Sign in", new_user_session_path %></li>

@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
     if current_user.admin == true
    #   rails_admin_path
     elsif current_user.member == true
-  #    members_index_path
+      reservations_path
     elsif current_user.guest == true
       root_path
     end
