@@ -1,4 +1,12 @@
-<p id="notice"><%= notice %></p>
+<p>
+  <strong>Applicant:</strong>
+  <%= @membership_application.user.full_name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @membership_application.user.email %>
+</p>
 
 <p>
   <strong>Address:</strong>
@@ -13,6 +21,11 @@
 <p>
   <strong>Phone:</strong>
   <%= @membership_application.phone %>
+</p>
+
+<p>
+  <strong>Date of Birth:</strong>
+  <%= @membership_application.date_of_birth.strftime("%b %d, %Y") %>
 </p>
 
 <p>
@@ -60,3 +73,8 @@
   <%= link_to 'Back', membership_applications_path %>
 <% end %>
 
+<style type="text/css" media="screen">
+  p {
+    line-height: 15%;
+  }
+</style>

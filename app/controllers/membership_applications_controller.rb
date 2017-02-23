@@ -15,7 +15,11 @@ class MembershipApplicationsController < ApplicationController
 
   # GET /membership_applications/new
   def new
-    @membership_application = MembershipApplication.new
+    if current_user.guest == true
+      @membership_application = MembershipApplication.new
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   # GET /membership_applications/1/edit
@@ -77,6 +81,6 @@ class MembershipApplicationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def membership_application_params
-      params.require(:membership_application).permit(:address, :postal_code, :phone, :occupation, :company_name, :company_address, :company_postal_code, :company_phone, :membership, :first_sponsor_name, :second_sponsor_name, :user_id)
+      params.require(:membership_application).permit(:address, :postal_code, :phone, :occupation, :company_name, :company_address, :company_postal_code, :company_phone, :membership, :first_sponsor_name, :second_sponsor_name, :user_id, :date_of_birth)
     end
 end

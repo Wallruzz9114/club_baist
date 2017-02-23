@@ -41,9 +41,6 @@ GEM
     arel (7.1.4)
     bcrypt (3.1.11)
     bootstrap_form (2.6.0)
-    bootswatch-sass (3.3.7)
-      rails (>= 4.2.0)
-      sass-rails (~> 5.0)
     builder (3.2.3)
     byebug (9.0.0)
     cancan (1.6.10)
@@ -200,7 +197,6 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap_form
-  bootswatch-sass (~> 3.3, >= 3.3.6.1)
   byebug (= 9.0.0)
   cancan
   coffee-rails (= 4.2.1)

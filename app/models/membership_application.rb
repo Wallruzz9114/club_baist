@@ -8,6 +8,8 @@ class MembershipApplication < ApplicationRecord
   validates :address, presence: true
   validates :postal_code, presence: true, format: { with: canadian_postal_code }
   validates :phone, presence: true, format: { with: canadian_phone }
+  validates :date_of_birth, presence: true
+  validate :at_least_18
   validates :occupation, presence: true
   validates :company_name, presence: true
   validates :company_address, presence: true
@@ -19,6 +21,12 @@ class MembershipApplication < ApplicationRecord
   validate :different_sponsors
 
   private
+
+  def at_least_18
+    if self.date_of_birth
+      errors.add(:date_of_birth, 'must show that you are 18 years or older (< 1999).') if self.date_of_birth > 18.years.ago.to_date
+    end
+  end
 
   def different_sponsors
     errors.add(:first_sponsor_name, "can't be used twice!") unless

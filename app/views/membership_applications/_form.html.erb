@@ -1,61 +1,33 @@
-<%= form_for(@membership_application) do |f| %>
-  <% if @membership_application.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@membership_application.errors.count, "error") %> prohibited this membership_application from being saved:</h2>
+<div class="row">
+  <div class="col-sm-8 col-md-10 col-md-offset-1">
+    <div>
+      <%= bootstrap_form_for(@membership_application) do |f| %>
+        <% if @membership_application.errors.any? %>
+          <div class="alert alert-danger">
+            The form contains <%= pluralize(@membership_application.errors.count, "error") %>.
+            <ul>
+              <% @membership_application.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
 
-      <ul>
-      <% @membership_application.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+          </div>
+        <% end %>
+
+        <%= f.text_field :address, autofocus: true, hide_label: true, placeholder: "Address", class: 'form-control' %>
+        <%= f.text_field :postal_code, hide_label: true, placeholder: "Postal Code", class: 'form-control' %>
+        <%= f.text_field :phone, hide_label: true, placeholder: "Phone", class: 'form-control' %>
+        <%= f.date_field :date_of_birth, class: 'form-control' %>
+        <%= f.text_field :occupation, hide_label: true, placeholder: "Occupation", class: 'form-control' %>
+        <%= f.text_field :company_name, hide_label: true, placeholder: "Company Name", class: 'form-control' %>
+        <%= f.text_field :company_address, hide_label: true, placeholder: "Company Address", class: 'form-control' %>
+        <%= f.text_field :company_postal_code, hide_label: true, placeholder: "Company Postal Code", class: 'form-control' %>
+        <%= f.text_field :company_phone, hide_label: true, placeholder: "Company Phone", class: 'form-control' %>
+        <%= f.select :membership, [["Gold", "Gold"], ["Silver", "Silver"], ["Bronze", "Bronze"], ["Copper", "Copper"]], { class: 'form-control' } %>
+        <%= f.collection_select(:first_sponsor_name, User.where(shareholder: true), :full_name, :full_name, { class: 'dropdown-menu' }) %>
+        <%= f.collection_select(:second_sponsor_name, User.where(shareholder: true), :full_name, :full_name, { class: 'dropdown-menu' }) %>
+        <%= f.submit "Submit", class: 'btn btn-lg btn-block btn-success' %>
       <% end %>
-      </ul>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_field :address %>
   </div>
-  <div class="field">
-    <%= f.label :postal_code %><br>
-    <%= f.text_field :postal_code %>
-  </div>
-  <div class="field">
-    <%= f.label :phone %><br>
-    <%= f.text_field :phone %>
-  </div>
-  <div class="field">
-    <%= f.label :occupation %><br>
-    <%= f.text_field :occupation %>
-  </div>
-  <div class="field">
-    <%= f.label :company_name %><br>
-    <%= f.text_field :company_name %>
-  </div>
-  <div class="field">
-    <%= f.label :company_address %><br>
-    <%= f.text_field :company_address %>
-  </div>
-  <div class="field">
-    <%= f.label :company_postal_code %><br>
-    <%= f.text_field :company_postal_code %>
-  </div>
-  <div class="field">
-    <%= f.label :company_phone %><br>
-    <%= f.text_field :company_phone %>
-  </div>
-   <div class="field">
-     <%= f.label :membership %><br>
-     <%= f.select :membership, [["Gold", "Gold"], ["Silver", "Silver"], ["Bronze", "Bronze"], ["Copper", "Copper"]] %>
-  </div>
-  <div class="field">
-    <%= f.label :first_sponsor_name %><br>
-    <%= f.collection_select(:first_sponsor_name, User.where(shareholder: true), :full_name, :full_name) %>
-  </div>
-  <div class="field">
-    <%= f.label :second_sponsor_name %><br>
-    <%= f.collection_select(:second_sponsor_name, User.where(shareholder: true), :full_name, :full_name) %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

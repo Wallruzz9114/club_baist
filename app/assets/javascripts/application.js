@@ -13,9 +13,14 @@
 //= require jquery
 //= require toastr
 //= require jquery_ujs
-//= require bootstrap
 //= require turbolinks
 //= require_tree .
+//= require bootstrap.min
+//= require bootstrap-datepicker
+//= require jquery.min
+//= require material-kit
+//= require material.min
+//= require nouislider.min
 
 $(document).ready(function() {
 
