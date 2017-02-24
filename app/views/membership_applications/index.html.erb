@@ -1,33 +1,35 @@
-<h1>Your Membership</h1>
+<div class="col-sm-6 col-md-6 col-md-offset-3">
+  <h2>Your Membership</h2>
+  <br>
+  <% if current_user.nil? %>
+    <div>
+      <%= link_to 'New Membership application', new_membership_application_path, class: 'btn btn-default btnn-sm pull-right' %>
+    </div>
+  <% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Applicant</th>
-      <th>Membership</th>
-      <th>Sponsor 1</th>
-      <th>Sponsor 2</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @membership_applications.each do |membership_application| %>
+  <table class="table table-striped table-responsive">
+    <thead>
       <tr>
-        <td><%= membership_application.user.full_name %></td>
-        <td><%= membership_application.membership %><std>
-        <td><%= membership_application.first_sponsor_name %></td>
-        <td><%= membership_application.second_sponsor_name %></td>
-        <td><%= link_to 'Show', membership_application %></td>
-        <td><%= link_to 'Edit', edit_membership_application_path(membership_application) %></td>
-        <td><%= link_to 'Destroy', membership_application, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Applicant</th>
+        <th>Membership</th>
+        <th>Sponsor 1</th>
+        <th>Sponsor 2</th>
+        <th class="text-centerActions"</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @membership_applications.each do |membership_application| %>
+        <tr>
+          <td><%= membership_application.user.full_name %></td>
+          <td><%= membership_application.membership %><std>
+            <td><%= membership_application.first_sponsor_name %></td>
+            <td><%= membership_application.second_sponsor_name %></td>
+            <td><%= link_to 'Show', membership_application, class: 'btn btn-info btn-simple btn-xs' %></td>
+            <td><%= link_to 'Edit', edit_membership_application_path(membership_application), class: 'btn btn-warning btn-simple btn-xs' %></td>
+            <td><%= link_to 'Destroy', membership_application, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-simple btn-xs' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<br>
-
-<% if current_user.nil? %>
-  <%= link_to 'New Membership application', new_membership_application_path %>
-<% end %>
+</div>
