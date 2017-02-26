@@ -26,13 +26,6 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="navigation-example-2">
-      <% if user_signed_in? %>
-        <% if current_user.member == true %>
-          <ul class="nav navbar-nav">
-            <li><%= link_to "View Application", membership_application_path %></li>
-          </ul>
-        <% end %>
-      <% end %>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           <li><%= link_to "Hey, " + current_user.full_name, "#" %></li>
