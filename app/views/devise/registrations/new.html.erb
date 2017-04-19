@@ -6,6 +6,7 @@
         <%= devise_error_messages! %>
         <%= f.text_field :full_name, hide_label: true, autofocus: true, placeholder: "Full Name", class: 'form-control' %>
         <%= f.email_field :email, hide_label: true, placeholder: "Email", class: 'form-control' %>
+        <%= f.select :gender, [["Male", "Male"], ["Female", "Female"]], { class: 'form-control' } %>
         <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> characters minimum)</em>
         <% end %><br />
